@@ -1,0 +1,2 @@
+# AlgoritmoVisibilidad
+Prueba técnica Inditex
