@@ -1,28 +1,23 @@
 package com.algoritmo.visibilidad.infrastructure;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import com.algoritmo.visibilidad.VisibilidadApplication;
+
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.algoritmo.visibilidad.domain.Product;
 import com.algoritmo.visibilidad.domain.Size;
 import com.algoritmo.visibilidad.domain.Stock;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
-import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
+
+
 
 public class ReadCSV implements ReadData {
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ReadCSV.class);
 	private ColumnPositionMappingStrategy strat = null;
 	private CsvToBean csv = null;
 
@@ -37,11 +32,9 @@ public class ReadCSV implements ReadData {
 			String[] columns = new String[] { "id", "sequence" };
 			strat.setColumnMapping(columns);
 			products = (ArrayList<Product>) csv.parse(strat, reader);
-			for (Product e : products) {
-				System.out.println(e);
+			for (Product e : products) {				LOGGER.info(e.toString());;
 			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		} catch (Exception e) {			LOGGER.error(e.getMessage());
 		}
 		return products;
 	}
@@ -57,11 +50,9 @@ public class ReadCSV implements ReadData {
 			String[] columns = new String[] { "id", "productId", "backSoon", "special" };
 			strat.setColumnMapping(columns);
 			sizes = (ArrayList<Size>) csv.parse(strat, reader);
-			for (Size e : sizes) {
-				System.out.println(e);
+			for (Size e : sizes) {				LOGGER.info(e.toString());;
 			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		} catch (Exception e) {			LOGGER.error(e.getMessage());
 		}
 		return sizes;
 	}
@@ -77,11 +68,9 @@ public class ReadCSV implements ReadData {
 			String[] columns = new String[] { "sizeId", "quantity" };
 			strat.setColumnMapping(columns);
 			stocks = (ArrayList<Stock>) csv.parse(strat, reader);
-			for (Stock e : stocks) {
-				System.out.println(e);
+			for (Stock e : stocks) {				LOGGER.info(e.toString());
 			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		} catch (Exception e) {			LOGGER.error(e.getMessage());
 		}
 		return stocks;
 	}

@@ -1,5 +1,6 @@
 package com.algoritmo.visibilidad.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import java.util.Comparator;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString(includeFieldNames = false,onlyExplicitlyIncluded = true)
 
 public class Product implements Comparable<Product> {
@@ -21,6 +23,7 @@ public class Product implements Comparable<Product> {
         /* For Ascending order*/
         return this.sequence-compareSecuence;
 	}
+	
 	
 
 }
